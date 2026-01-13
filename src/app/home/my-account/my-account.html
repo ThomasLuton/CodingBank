@@ -1,0 +1,16 @@
+<div class="flex justify-center">
+    <select class="my-2" #accountList (change)="onSelect(accountList.value)">
+        @for(account of accounts(); track $index){
+        <option [value]="$index">{{account.label}}</option>
+        }
+    </select>
+</div>
+<div class="flex justify-center my-2">
+    <p class="font-bold text-8xl">{{selectedAccount()?.balance}} €</p>
+</div>
+<div class="flex justify-center my-2">
+    <button [routerLink]="'accounts/' + selectedAccount()?.id"
+        class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Infos</button>
+    <button class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Send</button>
+    <button routerLink="open" class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Open</button>
+</div>

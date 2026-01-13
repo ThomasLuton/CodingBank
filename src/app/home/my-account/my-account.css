@@ -1,0 +1,9 @@
+select,
+select::picker(select) {
+    appearance: base-select;
+    padding: 0.5rem;
+    border: 2px solid blue;
+    border-radius: 10px;
+    background-color: white;
+    color: blue;
+}

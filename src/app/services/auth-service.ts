@@ -5,13 +5,14 @@ import { LoginForm } from '../models/login-form';
 import { TokenInfo } from '../models/token-info';
 import { catchError, map, Observable } from 'rxjs';
 import { RegisterForm } from '../models/register-form';
+import { UserInfo } from '../models/user-info';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly tokenKey = "token";
-  private readonly URL = "https://coding-bank.fly.dev"
+  private readonly URL = "https://coding-bank.fly.dev/auth"
 
   constructor(
     private readonly http: HttpClient,
@@ -23,8 +24,12 @@ export class AuthService {
     return !!token;
   }
 
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
   login(form: LoginForm): void {
-    this.http.post<TokenInfo>(this.URL + "/auth/login", form)
+    this.http.post<TokenInfo>(this.URL + "/login", form)
       .subscribe((res) => {
         localStorage.setItem(this.tokenKey, res.jwt)
         this.router.navigate(["home"])
@@ -32,7 +37,7 @@ export class AuthService {
   }
 
   register(form: RegisterForm): void {
-    this.http.post<TokenInfo>(this.URL + "/auth/register", form)
+    this.http.post<TokenInfo>(this.URL + "/register", form)
       .subscribe((res) => {
         localStorage.setItem(this.tokenKey, res.jwt)
         this.router.navigate(["home"])
@@ -42,5 +47,9 @@ export class AuthService {
   disconnect(): void {
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(["login"])
+  }
+
+  getUserInfo(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(this.URL + "/current-user")
   }
 }

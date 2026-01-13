@@ -1,6 +1,6 @@
-import { LoginForm } from "./login-form";
+import { UserInfo } from "./user-info";
 
 export interface TokenInfo {
     jwt: string,
-    user: LoginForm
+    user: UserInfo
 }
