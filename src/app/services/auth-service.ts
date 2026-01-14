@@ -52,4 +52,10 @@ export class AuthService {
   getUserInfo(): Observable<UserInfo> {
     return this.http.get<UserInfo>(this.URL + "/current-user")
   }
+
+  getTest() {
+    this.http.get<string>(this.URL).subscribe((res) => {
+      console.log(res)
+    })
+  }
 }

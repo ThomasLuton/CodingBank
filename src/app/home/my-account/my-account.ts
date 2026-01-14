@@ -19,5 +19,4 @@ export class MyAccount {
   onSelect(index: string) {
     this.selectedAccount.set(this.accounts()?.[parseInt(index)]);
   }
-
 }

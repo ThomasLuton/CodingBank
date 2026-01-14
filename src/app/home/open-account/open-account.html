@@ -1,13 +1,15 @@
 <button class="rounded-xl bg-blue-400 hover:bg-blue-100 m-2 p-2" routerLink="/home">Go back</button>
 <form (submit)="onSubmit($event)">
-    <div class="w-full">
+    <div class="w-full p-2">
         <p>Label</p>
         <input class="border rounded-md w-full py-1" type="text" [formField]="openForm.label">
     </div>
-    <div class="w-full">
+    <div class="w-full p-2">
         <p>Initial balance</p>
         <input class="border rounded-md w-full py-1" type="number" [formField]="openForm.initialBalance">
     </div>
-    <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200" type="submit"
-        [disabled]="openForm().invalid()">Login</button>
+    <div class="w-full p-2">
+        <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200" type="submit"
+            [disabled]="openForm().invalid()">Open</button>
+    </div>
 </form>
