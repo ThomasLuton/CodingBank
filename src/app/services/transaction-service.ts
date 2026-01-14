@@ -15,7 +15,13 @@ export class TransactionService {
 
   emit(transaction: SendTransactionDTO): void {
     this.http.post<Transaction>(this.URL + "/emit", transaction).subscribe((res) => {
-      this.router.navigate(["transactions/" + res.emitter.id + "/" + res.id])
+      this.router.navigate(["home/transactions/" + res.emitter.id + "/" + res.id])
+    })
+  }
+
+  cancel(id: string): void {
+    this.http.post<Transaction>(this.URL + "/" + id + "/cancel", id).subscribe((res) => {
+      this.router.navigate(["home"])
     })
   }
 }

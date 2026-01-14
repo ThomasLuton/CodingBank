@@ -10,5 +10,5 @@
 <p class="mx-2">{{transaction()?.emitter?.id === accountId()? "- " : "+ "}}{{transaction()?.amount |
     currency:'EUR'}}</p>
 @if (transaction()?.status?.toLowerCase() === 'pending') {
-<button class="rounded-xl bg-red-400 hover:bg-red-100 m-2 p-2">Cancel</button>
+<button (click)="cancel()" class="rounded-xl bg-red-400 hover:bg-red-100 m-2 p-2">Cancel</button>
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { AuthService } from '../services/auth-service';
 import { PasswordKeyBoard } from "../commons/password-key-board/password-key-board";
@@ -28,7 +28,6 @@ export class Login {
       minLength(schemaPath.clientCode, 8),
       minLength(schemaPath.password, 6)
   });
-
   constructor(private readonly authService: AuthService) { }
 
   handleDigitInput(input: number) {
