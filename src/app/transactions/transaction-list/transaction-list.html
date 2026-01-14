@@ -1,0 +1,14 @@
+<button class="rounded-xl bg-blue-400 hover:bg-blue-100 m-2 p-2" routerLink="/home">Go back</button>
+<div class="mx-2">
+    @for(transaction of transactions(); track $index){
+    <div type="button" [routerLink]="transaction.id"
+        class="flex justify-around my-2 border rounded border-blue-400 hover:bg-blue-200">
+        <p class="mx-2 my-1 px-2 rounded-xl bg-blue-200 text-white">{{transaction.emitter.owner.name |
+            firstLetter:true}}</p>
+        <p class="mx-2">{{transaction.emittedAt | date}}</p>
+        <p class="mx-2">{{transaction.description}}</p>
+        <p class="mx-2">{{transaction.emitter.id === accountId()? "- " : "+ "}}{{transaction.amount |
+            currency:'EUR'}}</p>
+    </div>
+    }
+</div>

@@ -1,6 +1,7 @@
 <div class="flex w-full bg-blue-300 p-3">
     <p>Coding Bank</p>
-    <button (click)="isOpen.set(true)" class="ml-auto px-2 rounded-xl bg-red-500 text-white">{{firstLetter()}}</button>
+    <button (click)="isOpen.set(true)" class="ml-auto px-2 rounded-xl bg-red-500 text-white">{{userInfo()?.name |
+        firstLetter:true}}</button>
 </div>
 
 @if(isOpen()){

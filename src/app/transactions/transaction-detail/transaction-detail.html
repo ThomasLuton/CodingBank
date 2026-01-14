@@ -1,0 +1,14 @@
+<button class="rounded-xl bg-blue-400 hover:bg-blue-100 m-2 p-2" routerLink="/home">Go back</button>
+<div class="flex justify-around">
+    <p class="mx-2 my-1 px-2 rounded-xl bg-blue-200 text-white">{{transaction()?.emitter?.owner?.name |
+        firstLetter:true}}</p>
+    <p class="mx-2">{{transaction()?.emitter?.owner?.name}}</p>
+</div>
+<p class="mx-2">{{transaction()?.emittedAt | date}}</p>
+<p class="mx-2">{{transaction()?.description}}</p>
+<p class="mx-2">{{transaction()?.status}}</p>
+<p class="mx-2">{{transaction()?.emitter?.id === accountId()? "- " : "+ "}}{{transaction()?.amount |
+    currency:'EUR'}}</p>
+@if (transaction()?.status?.toLowerCase() === 'pending') {
+<button class="rounded-xl bg-red-400 hover:bg-red-100 m-2 p-2">Cancel</button>
+}

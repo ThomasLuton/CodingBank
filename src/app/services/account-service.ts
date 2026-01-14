@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Account } from '../models/account';
 import { OpenAccountForm } from '../models/open-account-form';
 import { Router } from '@angular/router';
+import { Transaction } from '../models/transaction';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class AccountService {
       .subscribe((res) => {
         this.router.navigate(["/home/accounts/" + res.id])
       })
+  }
+
+  getTransactions(id: string): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.URL + "/" + id + "/transactions")
   }
 }

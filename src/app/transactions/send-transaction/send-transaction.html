@@ -1,0 +1,23 @@
+<button class="rounded-xl bg-blue-400 hover:bg-blue-100 m-2 p-2" routerLink="/home">Go back</button>
+<form (submit)="onSubmit($event)">
+    <div class="w-full p-2">
+        <p>Receiver id</p>
+        <input class="border rounded-md w-full py-1" type="text" [formField]="transactionForm.receiverAccountId">
+    </div>
+    <div class="w-full p-2">
+        <p>Amount</p>
+        <div class="flex">
+            <input class="border rounded-md w-full py-1" type="number" [formField]="transactionForm.amount">
+            <p class="border rounded-md p-2 ml-2">€</p>
+        </div>
+    </div>
+    <div class="w-full p-2">
+        <p>Description</p>
+        <input class="border rounded-md w-full py-1" type="text" [formField]="transactionForm.description"
+            placeholder="Refund">
+    </div>
+    <div class="w-full p-2">
+        <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200" type="submit"
+            [disabled]="transactionForm().invalid()">Send</button>
+    </div>
+</form>

@@ -11,6 +11,23 @@
 <div class="flex justify-center my-2">
     <button [routerLink]="'accounts/' + selectedAccount()?.id"
         class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Infos</button>
-    <button class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Send</button>
+    <button [routerLink]="'accounts/send/' + selectedAccount()?.id"
+        class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Send</button>
     <button routerLink="open" class="m-1 rounded-xl bg-blue-500 hover:bg-blue-200 text-white p-1">Open</button>
+</div>
+<div class="my-2 px-10">
+    @for(transaction of fiveTransactions(); track $index){
+    <div type="button" [routerLink]="'transactions/' + selectedAccount()?.id + '/' + transaction.id"
+        class="flex justify-around my-2 border rounded border-blue-400 hover:bg-blue-200">
+        <p class="mx-2 my-1 px-2 rounded-xl bg-blue-200 text-white">{{transaction.emitter.owner.name |
+            firstLetter:true}}</p>
+        <p class="mx-2">{{transaction.emittedAt | date}}</p>
+        <p class="mx-2">{{transaction.description}}</p>
+        <p class="mx-2">{{transaction.emitter.id === selectedAccount()?.id ? "- " : "+ "}}{{transaction.amount |
+            currency:'EUR'}}</p>
+    </div>
+    }
+    <div class="flex justify-center">
+        <a [routerLink]="'transactions/' + selectedAccount()?.id" class="text-blue-500 hover:text-blue-200">View all</a>
+    </div>
 </div>
