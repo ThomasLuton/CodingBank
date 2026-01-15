@@ -21,4 +21,8 @@ export class Infos {
     return "";
   })
   account = toSignal(this.accountService.getAccount(this.id()))
+
+  copy(text: string | undefined): void {
+    navigator.clipboard.writeText(text as string);
+  }
 }

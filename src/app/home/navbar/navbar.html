@@ -12,7 +12,8 @@
     </div>
     <div class="rounded-xl bg-green-100 m-1 p-1 ml-auto">
         <h5>{{userInfo()?.name}}</h5>
-        <p>Client code = {{userInfo()?.clientCode}}</p>
+        <p (click)="copy(userInfo()?.clientCode)" class="text-blue-500 hover:text-blue-200">Client code =
+            {{userInfo()?.clientCode}}</p>
     </div>
     <div (click)=" logOut()" type="button" class="rounded-xl bg-red-400 hover:bg-red-100 m-1 p-1 w-20 ml-auto">
         <p>Log out</p>

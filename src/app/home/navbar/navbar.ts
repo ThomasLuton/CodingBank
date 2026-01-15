@@ -19,4 +19,8 @@ export class Navbar {
   logOut(): void {
     this.authService.disconnect();
   }
+
+  copy(text: string | undefined): void {
+    navigator.clipboard.writeText(text as string);
+  }
 }

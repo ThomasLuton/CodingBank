@@ -6,12 +6,13 @@ import { OpenAccountForm } from '../models/open-account-form';
 import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
 import { ToastService } from './toast-service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  private readonly URL = "https://coding-bank.fly.dev/accounts"
+  private readonly URL = environment.api + "accounts"
   private readonly router = inject(Router)
   private readonly toastService = inject(ToastService);
 

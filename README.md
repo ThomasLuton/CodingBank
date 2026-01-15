@@ -1,4 +1,3 @@
-    13- copy
     15- in memory
     16- test
     18- retry

@@ -4,8 +4,6 @@ import { AuthService } from '../services/auth-service';
 import { PasswordKeyBoard } from "../commons/password-key-board/password-key-board";
 import { disabled, form, FormField, maxLength, minLength, readonly, required, validateHttp } from '@angular/forms/signals';
 import { LoginForm } from '../models/login-form';
-import { min } from 'rxjs';
-import { CustomDisable } from '../custom-disable';
 
 @Component({
   selector: 'app-login',

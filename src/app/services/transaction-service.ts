@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { SendTransactionDTO } from '../models/sendTransactionDTO';
 import { Transaction } from '../models/transaction';
 import { ToastService } from './toast-service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
 
-  private readonly URL = "https://coding-bank.fly.dev/transactions"
+  private readonly URL = environment.api + "transactions"
   private readonly http = inject(HttpClient)
   private readonly router = inject(Router)
   private readonly toastService = inject(ToastService);

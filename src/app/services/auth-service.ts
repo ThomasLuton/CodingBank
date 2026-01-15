@@ -6,13 +6,14 @@ import { TokenInfo } from '../models/token-info';
 import { catchError, map, Observable } from 'rxjs';
 import { RegisterForm } from '../models/register-form';
 import { UserInfo } from '../models/user-info';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly tokenKey = "token";
-  private readonly URL = "https://coding-bank.fly.dev/auth"
+  private readonly URL = environment.api + "auth"
 
   constructor(
     private readonly http: HttpClient,
