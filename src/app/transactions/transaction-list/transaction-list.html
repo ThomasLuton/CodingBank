@@ -4,7 +4,7 @@
     <div type="button" [routerLink]="transaction.id"
         class="flex justify-around my-2 border rounded border-blue-400 hover:bg-blue-200">
         <p class="mx-2 my-1 px-2 rounded-xl bg-blue-200 text-white">
-            @if(transaction.emitter.id !== accountId()){
+            @if(transaction.emitter.id === accountId()){
             {{transaction.receiver.owner.name | firstLetter:true}}
             }@else {
             {{transaction.emitter.owner.name | firstLetter:true}}

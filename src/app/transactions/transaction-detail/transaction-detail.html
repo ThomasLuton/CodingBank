@@ -1,6 +1,6 @@
 <button class="rounded-xl bg-blue-400 hover:bg-blue-100 m-2 p-2" routerLink="/home">Go back</button>
 <div class="flex justify-around">
-    @if(transaction()?.emitter?.id !== accountId()){
+    @if(transaction()?.emitter?.id === accountId()){
     <p class="mx-2 my-1 px-2 rounded-xl bg-blue-200 text-white">{{transaction()?.receiver?.owner?.name |
         firstLetter:true}}</p>
     <p class="mx-2">{{transaction()?.receiver?.owner?.name}}</p>
