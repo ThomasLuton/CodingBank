@@ -5,6 +5,7 @@ import { PasswordKeyBoard } from "../commons/password-key-board/password-key-boa
 import { disabled, form, FormField, maxLength, minLength, readonly, required, validateHttp } from '@angular/forms/signals';
 import { LoginForm } from '../models/login-form';
 import { min } from 'rxjs';
+import { CustomDisable } from '../custom-disable';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,12 @@ export class Login {
     password: ''
   })
   loginForm = form(this.loginModel, (schemaPath) => {
-    disabled(schemaPath.password),
-      required(schemaPath.clientCode),
-      required(schemaPath.password),
-      maxLength(schemaPath.clientCode, 8),
-      maxLength(schemaPath.password, 6),
-      minLength(schemaPath.clientCode, 8),
-      minLength(schemaPath.password, 6)
+    required(schemaPath.clientCode, { message: "Client code is required" }),
+      required(schemaPath.password, { message: "Password is required" }),
+      maxLength(schemaPath.clientCode, 8, { message: "Client code should be 8 characters long" }),
+      maxLength(schemaPath.password, 6, { message: "Password should be 6 characters long" }),
+      minLength(schemaPath.clientCode, 8, { message: "Client code should be 8 characters long" }),
+      minLength(schemaPath.password, 6, { message: "Password should be 6 characters long" })
   });
   constructor(private readonly authService: AuthService) { }
 
@@ -37,6 +37,7 @@ export class Login {
       }
       return value + input
     });
+    this.loginForm.password().markAsTouched();
   }
 
   clearPassword() {

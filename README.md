@@ -1,7 +1,7 @@
-Todo
+    13- copy
+    15- in memory
+    16- test
+    18- retry
 
-trouver une solution de contournement avec disable et required
-afficher les erreurs back et front
-touched, dirty, ....
-
-add token interceptor (maybe http error interceptor)
+62489473 victor lA 65fabc6d-338a-4b4d-8c15-4248e066115f
+77454383 bnp checking 04ed2e2d-0762-407e-9709-47ba22cffe76

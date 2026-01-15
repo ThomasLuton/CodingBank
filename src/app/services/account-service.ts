@@ -5,6 +5,7 @@ import { Account } from '../models/account';
 import { OpenAccountForm } from '../models/open-account-form';
 import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
+import { ToastService } from './toast-service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ import { Transaction } from '../models/transaction';
 export class AccountService {
   private readonly URL = "https://coding-bank.fly.dev/accounts"
   private readonly router = inject(Router)
+  private readonly toastService = inject(ToastService);
 
   constructor(
     private readonly http: HttpClient,
@@ -28,6 +30,7 @@ export class AccountService {
   openAccount(form: OpenAccountForm): void {
     this.http.post<Account>(this.URL, form)
       .subscribe((res) => {
+        this.toastService.success("Account " + res.label + " created")
         this.router.navigate(["/home/accounts/" + res.id])
       })
   }

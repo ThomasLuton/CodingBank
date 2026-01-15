@@ -23,10 +23,10 @@ export class SendTransaction {
   })
 
   transactionForm = form(this.transactionModel, (schemaPath) => {
-    required(schemaPath.receiverAccountId)
-    required(schemaPath.amount)
-    min(schemaPath.amount, 1)
-    required(schemaPath.description)
+    required(schemaPath.receiverAccountId, { message: "Receiver account id is required" })
+    required(schemaPath.amount, { message: "Amount is required" })
+    min(schemaPath.amount, 1, { message: "Amount should be positive" })
+    required(schemaPath.description, { message: "Description is required" })
     validate(schemaPath.receiverAccountId, ({ value }) => {
       if (value() === this.accountId()) {
         return {

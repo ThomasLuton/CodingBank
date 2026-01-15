@@ -3,6 +3,11 @@
     <div class="w-full p-2">
         <p>Label</p>
         <input class="border rounded-md w-full py-1" type="text" [formField]="openForm.label">
+        @if (openForm.label().touched() && openForm.label().invalid()) {
+        @for(error of openForm.label().errorSummary(); track $index){
+        <p class="text-red-500">{{error.message}}</p>
+        }
+        }
     </div>
     <div class="w-full p-2">
         <p>Initial balance</p>

@@ -19,11 +19,10 @@ export class Register {
     password: ''
   })
   registerForm = form(this.registerModel, (schemaPath) => {
-    disabled(schemaPath.password),
-      required(schemaPath.name),
-      required(schemaPath.password),
-      maxLength(schemaPath.password, 6),
-      minLength(schemaPath.password, 6)
+    required(schemaPath.name, { message: "Name is required" }),
+      required(schemaPath.password, { message: "Password is required" }),
+      maxLength(schemaPath.password, 6, { message: "Password should be 6 characters long" }),
+      minLength(schemaPath.password, 6, { message: "Password should be 6 characters long" })
   });
   constructor(private readonly authService: AuthService) { }
 
@@ -34,6 +33,7 @@ export class Register {
       }
       return value + input
     });
+    this.registerForm.password().markAsTouched();
   }
   clearPassword() {
     this.registerForm.password().value.set('');

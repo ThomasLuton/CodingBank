@@ -4,21 +4,29 @@
         <div class="w-full">
             <p>Name</p>
             <input class="border rounded-md w-full py-1" type="text" [formField]="registerForm.name">
+            @if (registerForm.name().touched() && registerForm.name().invalid()) {
+            @for(error of registerForm.name().errorSummary(); track $index){
+            <p class="text-red-500">{{error.message}}</p>
+            }
+            }
         </div>
         <div class="my-3">
             <p>Password</p>
             <div class="flex">
-                <input type="password" class="border rounded-md w-full py-1" [formField]="registerForm.password">
+                <input (keyup)="clearPassword()" type="password" class="border rounded-md w-full py-1"
+                    [formField]="registerForm.password">
                 <button (click)="clearPassword()"
                     class="px-3 ml-1 text-white border rounded-md bg-red-600 border-red-800 hover:bg-red-200 py-1">X</button>
             </div>
+            @if (registerForm.password().touched() && registerForm.password().invalid()) {
+            @for(error of registerForm.password().errorSummary(); track $index){
+            <p class="text-red-500">{{error.message}}</p>
+            }
+            }
         </div>
         <app-password-key-board (onDigitInput)="handleDigitInput($event)"></app-password-key-board>
-        <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200" type="submit"
-            [disabled]="registerForm().invalid()">Login</button>
-        @if(registerForm.name().pending()){
-        <p>Loading....</p>
-        }
+        <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200 hover:bg-blue-200"
+            type="submit" [disabled]="registerForm().invalid()">Login</button>
     </form>
     <div class="flex">
         <p>Already have an account ?</p>

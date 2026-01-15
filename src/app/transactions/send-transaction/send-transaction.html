@@ -3,6 +3,11 @@
     <div class="w-full p-2">
         <p>Receiver id</p>
         <input class="border rounded-md w-full py-1" type="text" [formField]="transactionForm.receiverAccountId">
+        @if (transactionForm.receiverAccountId().touched() && transactionForm.receiverAccountId().invalid()) {
+        @for(error of transactionForm.receiverAccountId().errorSummary(); track $index){
+        <p class="text-red-500">{{error.message}}</p>
+        }
+        }
     </div>
     <div class="w-full p-2">
         <p>Amount</p>
@@ -10,11 +15,21 @@
             <input class="border rounded-md w-full py-1" type="number" [formField]="transactionForm.amount">
             <p class="border rounded-md p-2 ml-2">€</p>
         </div>
+        @if (transactionForm.amount().touched() && transactionForm.amount().invalid()) {
+        @for(error of transactionForm.amount().errorSummary(); track $index){
+        <p class="text-red-500">{{error.message}}</p>
+        }
+        }
     </div>
     <div class="w-full p-2">
         <p>Description</p>
         <input class="border rounded-md w-full py-1" type="text" [formField]="transactionForm.description"
             placeholder="Refund">
+        @if (transactionForm.description().touched() && transactionForm.description().invalid()) {
+        @for(error of transactionForm.description().errorSummary(); track $index){
+        <p class="text-red-500">{{error.message}}</p>
+        }
+        }
     </div>
     <div class="w-full p-2">
         <button class="w-full text-white border bg-blue-600 rounded-md my-2 p-3 disabled:bg-blue-200" type="submit"

@@ -20,7 +20,7 @@ export class OpenAccount {
   })
 
   openForm = form(this.openModel, (schemaPath) => {
-    required(schemaPath.label);
+    required(schemaPath.label, { message: "Label is required" });
   })
 
   onSubmit(event: Event) {
