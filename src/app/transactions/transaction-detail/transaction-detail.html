@@ -19,3 +19,6 @@
 @if (transaction()?.status?.toLowerCase() === 'pending') {
 <button (click)="cancel()" class="rounded-xl bg-red-400 hover:bg-red-100 m-2 p-2">Cancel</button>
 }
+@if (transaction()?.status?.toLowerCase() === 'canceled'){
+<button (click)="retry()" class="rounded-xl bg-red-400 hover:bg-red-100 m-2 p-2">Retry</button>
+}

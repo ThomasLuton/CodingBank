@@ -6,6 +6,7 @@ import { Transaction } from '../../models/transaction';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { FirstLetterPipe } from '../../first-letter-pipe';
 import { TransactionService } from '../../services/transaction-service';
+import { SendTransactionDTO } from '../../models/sendTransactionDTO';
 
 @Component({
   selector: 'app-transaction-detail',
@@ -41,5 +42,16 @@ export class TransactionDetail {
 
   cancel() {
     this.transactionService.cancel(this.transactionId())
+  }
+
+  retry() {
+    const description = "Retry of " + this.transactionId();
+    const dto: SendTransactionDTO = {
+      emitterAccountId: this.transaction()?.emitter.id as string,
+      receiverAccountId: this.transaction()?.receiver.id as string,
+      amount: this.transaction()?.amount as number,
+      description: description
+    }
+    this.transactionService.emit(dto)
   }
 }
