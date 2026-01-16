@@ -15,10 +15,7 @@ export class AccountService {
   private readonly URL = environment.api + "accounts"
   private readonly router = inject(Router)
   private readonly toastService = inject(ToastService);
-
-  constructor(
-    private readonly http: HttpClient,
-  ) { }
+  private readonly http = inject(HttpClient);
 
   getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.URL);
